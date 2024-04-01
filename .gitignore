@@ -1,6 +1,4 @@
 .idea
-!.idea/inspectionProfiles
-
 **/local.properties
 **/.gradle
 **/gradle.properties
@@ -8,3 +6,5 @@
 .gradle
 **/build/
 !src/**/build/
+
+**/.DS_Store
