@@ -1,0 +1,10 @@
+.idea
+!.idea/inspectionProfiles
+
+**/local.properties
+**/.gradle
+**/gradle.properties
+**/gradle.xml
+.gradle
+**/build/
+!src/**/build/
