@@ -22,7 +22,7 @@ include:
 
 projectJDK: 21 #(Applied in CI/CD pipeline)
 bootstrap: |
-  mkdir examples/empty
+  mkdir -p examples/empty
 # ^ to trigger the Empty directory inspection
 #Execute shell command before Qodana execution (Applied in CI/CD pipeline)
 #bootstrap: sh ./prepare-qodana.sh
