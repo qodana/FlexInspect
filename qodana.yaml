@@ -9,7 +9,7 @@ profile:
   name: empty
 include:
   - name: JavaClassDoesNotDependOnInheritors
-
+  - name: EmptyDirectoryFlexInspectInspection
 #Enable inspections
 #include:
 #  - name: <SomeEnabledInspectionId>
@@ -21,7 +21,9 @@ include:
 #      - <path/where/not/run/inspection>
 
 projectJDK: 21 #(Applied in CI/CD pipeline)
-
+bootstrap: |
+  mkdir -p examples/empty
+# ^ to trigger the Empty directory inspection
 #Execute shell command before Qodana execution (Applied in CI/CD pipeline)
 #bootstrap: sh ./prepare-qodana.sh
 
