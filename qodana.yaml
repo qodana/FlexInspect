@@ -10,6 +10,7 @@ profile:
 include:
   - name: JavaClassDoesNotDependOnInheritors
   - name: EmptyDirectoryFlexInspectInspection
+  - name: KotlinEnsureActiveInLoopsOfSuspendFunctions
 #Enable inspections
 #include:
 #  - name: <SomeEnabledInspectionId>
