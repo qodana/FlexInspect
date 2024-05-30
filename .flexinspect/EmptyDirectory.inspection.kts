@@ -4,7 +4,7 @@ import com.intellij.openapi.roots.ProjectRootManager
 import com.intellij.openapi.vfs.VfsUtilCore
 import com.intellij.openapi.vfs.VirtualFile
 import org.intellij.lang.annotations.Language
-import org.jetbrains.kotlin.idea.core.util.toPsiDirectory
+import com.intellij.psi.PsiManager
 
 
 @Language("HTML")
@@ -19,7 +19,7 @@ val htmlDescription = """
 fun isReadActionNeeded(): Boolean {
     return false
 }
-private fun getPathRelativeToModule(file: VirtualFile, project: Project): String? {
+fun getPathRelativeToModule(file: VirtualFile, project: Project): String? {
     val rootManager = ProjectRootManager.getInstance(project)
     val contentRoots = rootManager.contentRootsFromAllModules
     for (otherRoot in contentRoots) {
@@ -33,6 +33,7 @@ val emptyDirectoryInspection = globalInspection { inspection ->
     val onlyReportDirectoriesUnderSourceRoots = false
     val project: Project = inspection.project
     val index: ProjectFileIndex = ProjectRootManager.getInstance(project).fileIndex
+    val psiManager = PsiManager.getInstance(project)
     index.iterateContent { file: VirtualFile ->
         if (onlyReportDirectoriesUnderSourceRoots && !index.isInSourceContent(file)) {
             return@iterateContent true
@@ -44,7 +45,7 @@ val emptyDirectoryInspection = globalInspection { inspection ->
         if (relativePath == null) {
             return@iterateContent true
         }
-        inspection.registerProblem(file.toPsiDirectory(project), "Empty directory $relativePath")
+        inspection.registerProblem(psiManager.findFile(file), "Empty directory $relativePath")
         return@iterateContent true
     }
 
