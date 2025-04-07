@@ -15,7 +15,7 @@ val htmlDescription = """
 val ensureActiveInLoopsOfSuspendFunctionsInspection = localInspection { psiFile, inspection ->
     fun isSuspendFunction(function: KtNamedFunction): Boolean {
         return analyze(function) {
-            (function.getFunctionLikeSymbol() as? KtFunctionSymbol)?.isSuspend ?: false
+            (function.symbol as? KaNamedFunctionSymbol)?.isSuspend ?: false
         }
     }
 
